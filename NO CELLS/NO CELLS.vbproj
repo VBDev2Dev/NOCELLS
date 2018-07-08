@@ -72,6 +72,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Grid Columns\Calendar\CalendarColumn.vb" />
+    <Compile Include="Grid Columns\Color Picker\ColorPickerColumn.vb" />
+    <Compile Include="Grid Columns\Calendar\CalendarEditingControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Grid Columns\Color Picker\ColorEditingControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Grid Columns\Color Picker\ColorPickerCell.vb" />
+    <Compile Include="Grid Columns\Calendar\CalendarCell.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
