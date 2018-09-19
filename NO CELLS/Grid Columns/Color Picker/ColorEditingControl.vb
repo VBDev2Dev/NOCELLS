@@ -55,11 +55,16 @@
 
 		  End Function
 		  Function getForeColor() As Color
-				Return If((CInt(CurrentColor.R) +
-					 CInt(CurrentColor.B) +
-					 CInt(CurrentColor.G)) / 3 > 127,
-					 Color.Black,
-					 Color.White)
+
+				'https://stackoverflow.com/questions/1855884/determine-font-color-based-on-background-color
+				Dim d As Integer = 0
+
+				' Counting the perceptive luminance - human eye favors green color... 
+				Dim luminance = (0.299 * CurrentColor.R + 0.587 * CurrentColor.G + 0.114 * CurrentColor.B) / 255
+
+				d = If(luminance > 0.5, 0, 255)
+				Return Color.FromArgb(d, d, d)
+
 		  End Function
 
 		  Sub PrepareEditingControlForEdit(ByVal selectAll As Boolean) _
