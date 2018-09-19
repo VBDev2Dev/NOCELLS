@@ -20,12 +20,15 @@ Namespace GridColumns.Calendar
 					 CType(DataGridView.EditingControl, CalendarEditingControl)
 
 				' Use the default row value when Value property is null.
-				If (Value Is Nothing OrElse IsDBNull(Value)) Then
-					 ctl.Value = CType(DefaultNewRowValue, Date)
-				Else
-					 ctl.Value = CType(Value, Date)
-				End If
-
+				Try
+					 Dim v = MyBase.GetValue(rowIndex)
+					 If v Is Nothing OrElse IsDBNull(v) Then
+						  ctl.Value = CType(DefaultNewRowValue, Date)
+					 Else
+						  ctl.Value = CType(v, Date)
+					 End If
+				Catch ex As Exception
+				End Try
 		  End Sub
 
 		  Overrides ReadOnly Property DefaultNewRowValue() As Object
