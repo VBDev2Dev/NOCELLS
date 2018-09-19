@@ -41,6 +41,18 @@ Public Class Form1
 		  Next
 		  MessageBox.Show("Look at Immediate window.")
 	 End Sub
+
+	 Private Sub btnSelected_Click(sender As Object, e As EventArgs) Handles btnSelected.Click
+		  For Each p In DataGridView1.SelectedRows.Cast(Of DataGridViewRow).Where(Function(r) Not r.IsNewRow).Select(Function(r) r.DataBoundItem).Cast(Of Person)
+				Debug.WriteLine(p)
+				Debug.WriteLine($"{vbTab} ID:{p.ID:B}")
+				Debug.WriteLine($"{vbTab} Age:{p.Age.TotalDays:N0} (days)")
+		  Next
+
+		  Debug.WriteLine("Notice I was able to get the properties from the data object even though the columns did not exist in the grid.")
+
+		  MessageBox.Show("Look at Immediate window.")
+	 End Sub
 	 Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
 		  Static rand As New Random
 		  Dim randString = Function(chars As Integer)
