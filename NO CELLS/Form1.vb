@@ -53,6 +53,14 @@ Public Class Form1
 
 		  MessageBox.Show("Look at Immediate window.")
 	 End Sub
+
+	 Private Sub btnColor_Click(sender As Object, e As EventArgs) Handles btnColor.Click
+		  For Each p In people
+				p.HairColor = Color.Cyan
+		  Next
+		  DataGridView1.Invalidate()
+	 End Sub
+
 	 Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
 		  Static rand As New Random
 		  Dim randString = Function(chars As Integer)
