@@ -6,6 +6,7 @@ Namespace GridColumns.Calendar
 		  Sub New()
 				' Use the short date format.
 				Style.Format = If(String.IsNullOrEmpty(Style.Format), "yyyy/MM/dd h:mm:ss tt", Style.Format)
+				Value = Now
 		  End Sub
 
 		  Overrides Sub InitializeEditingControl(ByVal rowIndex As Integer,
