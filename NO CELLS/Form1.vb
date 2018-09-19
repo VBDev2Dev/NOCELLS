@@ -15,6 +15,32 @@ Public Class Form1
 		  BirthdateDataGridViewCalendarColumn.MaxDate = Now
 	 End Sub
 
+	 Private Sub btnMissingCols_Click(sender As Object, e As EventArgs) Handles btnMissingCols.Click
+		  Debug.WriteLine("Datagrid columns")
+
+		  Dim props = GetType(Person).GetProperties
+		  Dim columns As IEnumerable(Of DataGridViewColumn) = DataGridView1.Columns.Cast(Of DataGridViewColumn)
+		  Dim matched = From p In props
+							 Join c In columns On p.Name Equals c.DataPropertyName
+							 Select New With {.Column = c, .Property = p}
+
+		  Dim missing = props.Except(matched.Select(Function(m) m.Property))
+		  For Each col In columns
+				Debug.WriteLine($"{vbTab}{col.Name}: Bound to {col.DataPropertyName}")
+				For Each row In DataGridView1.SelectedRows.Cast(Of DataGridViewRow).Where(Function(r) Not r.IsNewRow)
+					 Debug.WriteLine($"{vbTab}{vbTab}{row.Cells(col.Index).Value}")
+				Next
+		  Next
+		  Debug.WriteLine($"{NameOf(Person)} properties:")
+		  For Each p In props
+				Debug.WriteLine($"{vbTab}{p.Name}: {p.PropertyType.FullName}")
+		  Next
+		  Debug.WriteLine($"{NameOf(Person)} properties not in grid: CANNOT ACCESS USING CELLS!!!!")
+		  For Each m In missing
+				Debug.WriteLine($"{vbTab}{m.Name}: {m.PropertyType.FullName}")
+		  Next
+		  MessageBox.Show("Look at Immediate window.")
+	 End Sub
 	 Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
 		  Static rand As New Random
 		  Dim randString = Function(chars As Integer)
