@@ -12,5 +12,6 @@ DO NOT use cells for data access when using a datagridview.
 ## Things to note:
 - I only added some of the columns that link to properties on the Person class.  If I were to use cell access code, I could only access the values in the properties that are in the columns
 - See how double clicking a row header lets me read some data that is not in the columns.
+- Notice how changing the data updates the grid ( Change Color button)
 
 # NEVER EVER EVER use cells to get data from a datagridview, EVER!!!!!!!!!!
