@@ -1,7 +1,7 @@
 ﻿Public Class Person
 
 	 Overrides Function ToString() As String
-		  Return $"{FirstName} {LastName} ({ID:B}) is {Age.TotalDays:N0} days old and has {ColorTranslator.ToHtml(HairColor)} hair color."
+		  Return $"{FirstName} {LastName} ({ID:B}) is {Age.TotalDays:N0} days old and has {ColorTranslator.ToHtml(HairColor)} hair color. They are a {If(CanDrive, "Driver", "Passenger")}."
 
 	 End Function
 
