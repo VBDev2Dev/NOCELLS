@@ -60,8 +60,9 @@
 		  Sub PrepareEditingControlForEdit(ByVal selectAll As Boolean) _
 				Implements IDataGridViewEditingControl.PrepareEditingControlForEdit
 
-				' No preparation needs to be done.
 
+				Dim col As CalendarColumn = EditingControlDataGridView.CurrentCell.OwningColumn
+				MaxDate = col.MaxDate
 		  End Sub
 
 		  ReadOnly Property EditingControlCursor() As Cursor _

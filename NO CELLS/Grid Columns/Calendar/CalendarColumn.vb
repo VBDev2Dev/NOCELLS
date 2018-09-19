@@ -25,6 +25,6 @@ Namespace GridColumns.Calendar
 
 				End Set
 		  End Property
-
+		  Property MaxDate As Date = Date.MaxValue
 	 End Class
 End Namespace
