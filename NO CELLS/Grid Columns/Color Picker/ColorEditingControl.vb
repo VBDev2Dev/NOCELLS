@@ -28,6 +28,10 @@
 					 EditingControlDataGridView.NotifyCurrentCellDirty(True)
 
 					 EditingControlDataGridView.EndEdit()
+					 EditingControlDataGridView.Invalidate()
+					 EditingControlDataGridView.Refresh()
+
+
 
 				End If
 		  End Sub

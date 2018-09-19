@@ -19,8 +19,8 @@ Namespace GridColumns.ColorPicker
 
 
 		  Protected Overrides Sub Paint(ByVal graphics As Graphics, ByVal clipBounds As Rectangle, ByVal cellBounds As Rectangle, ByVal rowIndex As Integer, ByVal cellState As DataGridViewElementStates, ByVal value As Object, ByVal formattedValue As Object, ByVal errorText As String, ByVal cellStyle As DataGridViewCellStyle, ByVal advancedBorderStyle As DataGridViewAdvancedBorderStyle, ByVal paintParts As DataGridViewPaintParts)
-				Dim tmp As Object = value
-				[ReadOnly] = OwningRow.IsNewRow
+
+
 
 				MyBase.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, Nothing, Nothing, errorText, cellStyle, advancedBorderStyle, paintParts)
 
