@@ -22,42 +22,89 @@ Partial Class Form1
 		  Me.components = New System.ComponentModel.Container()
 		  Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		  Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-		  Me.pnlTests = New System.Windows.Forms.Panel()
 		  Me.PersonBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-		  Me.ColorPickerColumn1 = New ColorPickerColumn()
+		  Me.pnlTests = New System.Windows.Forms.Panel()
+		  Me.btnGenerate = New System.Windows.Forms.Button()
+		  Me.btnColor = New System.Windows.Forms.Button()
+		  Me.btnSelected = New System.Windows.Forms.Button()
+		  Me.btnMissingCols = New System.Windows.Forms.Button()
+		  Me.ColorPickerColumn1 = New NO_CELLS.GridColumns.ColorPicker.ColorPickerColumn()
 		  Me.FirstNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
 		  Me.LastNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-		  Me.BirthdateDataGridViewTextBoxColumn = New CalendarColumn()
+		  Me.BirthdateDataGridViewCalendarColumn = New NO_CELLS.GridColumns.Calendar.CalendarColumn()
 		  Me.CanDriveDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-		  Me.HairColor = New ColorPickerColumn()
+		  Me.HairColor = New NO_CELLS.GridColumns.ColorPicker.ColorPickerColumn()
 		  CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
 		  CType(Me.PersonBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+		  Me.pnlTests.SuspendLayout()
 		  Me.SuspendLayout()
 		  '
 		  'DataGridView1
 		  '
+		  Me.DataGridView1.AllowUserToAddRows = False
 		  Me.DataGridView1.AutoGenerateColumns = False
 		  Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-		  Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FirstNameDataGridViewTextBoxColumn, Me.LastNameDataGridViewTextBoxColumn, Me.BirthdateDataGridViewTextBoxColumn, Me.CanDriveDataGridViewCheckBoxColumn, Me.HairColor})
+		  Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.FirstNameDataGridViewTextBoxColumn, Me.LastNameDataGridViewTextBoxColumn, Me.BirthdateDataGridViewCalendarColumn, Me.CanDriveDataGridViewCheckBoxColumn, Me.HairColor})
 		  Me.DataGridView1.DataSource = Me.PersonBindingSource
 		  Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
 		  Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
 		  Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
 		  Me.DataGridView1.Name = "DataGridView1"
+		  Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
 		  Me.DataGridView1.Size = New System.Drawing.Size(1031, 350)
 		  Me.DataGridView1.TabIndex = 0
 		  '
+		  'PersonBindingSource
+		  '
+		  Me.PersonBindingSource.DataSource = GetType(NO_CELLS.Person)
+		  '
 		  'pnlTests
 		  '
+		  Me.pnlTests.Controls.Add(Me.btnGenerate)
+		  Me.pnlTests.Controls.Add(Me.btnColor)
+		  Me.pnlTests.Controls.Add(Me.btnSelected)
+		  Me.pnlTests.Controls.Add(Me.btnMissingCols)
 		  Me.pnlTests.Dock = System.Windows.Forms.DockStyle.Bottom
 		  Me.pnlTests.Location = New System.Drawing.Point(0, 350)
 		  Me.pnlTests.Name = "pnlTests"
 		  Me.pnlTests.Size = New System.Drawing.Size(1031, 100)
 		  Me.pnlTests.TabIndex = 1
 		  '
-		  'PersonBindingSource
+		  'btnGenerate
 		  '
-		  Me.PersonBindingSource.DataSource = GetType(NO_CELLS.Person)
+		  Me.btnGenerate.Location = New System.Drawing.Point(564, 18)
+		  Me.btnGenerate.Name = "btnGenerate"
+		  Me.btnGenerate.Size = New System.Drawing.Size(75, 57)
+		  Me.btnGenerate.TabIndex = 2
+		  Me.btnGenerate.Text = "Generate People"
+		  Me.btnGenerate.UseVisualStyleBackColor = True
+		  '
+		  'btnColor
+		  '
+		  Me.btnColor.Location = New System.Drawing.Point(345, 18)
+		  Me.btnColor.Name = "btnColor"
+		  Me.btnColor.Size = New System.Drawing.Size(75, 57)
+		  Me.btnColor.TabIndex = 1
+		  Me.btnColor.Text = "Change Color"
+		  Me.btnColor.UseVisualStyleBackColor = True
+		  '
+		  'btnSelected
+		  '
+		  Me.btnSelected.Location = New System.Drawing.Point(186, 18)
+		  Me.btnSelected.Name = "btnSelected"
+		  Me.btnSelected.Size = New System.Drawing.Size(75, 57)
+		  Me.btnSelected.TabIndex = 0
+		  Me.btnSelected.Text = "Get Selected Info"
+		  Me.btnSelected.UseVisualStyleBackColor = True
+		  '
+		  'btnMissingCols
+		  '
+		  Me.btnMissingCols.Location = New System.Drawing.Point(45, 18)
+		  Me.btnMissingCols.Name = "btnMissingCols"
+		  Me.btnMissingCols.Size = New System.Drawing.Size(75, 57)
+		  Me.btnMissingCols.TabIndex = 0
+		  Me.btnMissingCols.Text = "Missing Columns"
+		  Me.btnMissingCols.UseVisualStyleBackColor = True
 		  '
 		  'ColorPickerColumn1
 		  '
@@ -67,24 +114,27 @@ Partial Class Form1
 		  'FirstNameDataGridViewTextBoxColumn
 		  '
 		  Me.FirstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName"
+		  Me.FirstNameDataGridViewTextBoxColumn.Frozen = True
 		  Me.FirstNameDataGridViewTextBoxColumn.HeaderText = "First Name"
 		  Me.FirstNameDataGridViewTextBoxColumn.Name = "FirstNameDataGridViewTextBoxColumn"
 		  '
 		  'LastNameDataGridViewTextBoxColumn
 		  '
 		  Me.LastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName"
+		  Me.LastNameDataGridViewTextBoxColumn.Frozen = True
 		  Me.LastNameDataGridViewTextBoxColumn.HeaderText = "Last Name"
 		  Me.LastNameDataGridViewTextBoxColumn.Name = "LastNameDataGridViewTextBoxColumn"
 		  '
-		  'BirthdateDataGridViewTextBoxColumn
+		  'BirthdateDataGridViewCalendarColumn
 		  '
-		  Me.BirthdateDataGridViewTextBoxColumn.DataPropertyName = "Birthdate"
+		  Me.BirthdateDataGridViewCalendarColumn.DataPropertyName = "Birthdate"
 		  DataGridViewCellStyle1.Format = "d"
 		  DataGridViewCellStyle1.NullValue = Nothing
-		  Me.BirthdateDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-		  Me.BirthdateDataGridViewTextBoxColumn.HeaderText = "Birthdate"
-		  Me.BirthdateDataGridViewTextBoxColumn.Name = "BirthdateDataGridViewTextBoxColumn"
-		  Me.BirthdateDataGridViewTextBoxColumn.Width = 160
+		  Me.BirthdateDataGridViewCalendarColumn.DefaultCellStyle = DataGridViewCellStyle1
+		  Me.BirthdateDataGridViewCalendarColumn.HeaderText = "Birthdate"
+		  Me.BirthdateDataGridViewCalendarColumn.MaxDate = New Date(9999, 12, 31, 23, 59, 59, 999)
+		  Me.BirthdateDataGridViewCalendarColumn.Name = "BirthdateDataGridViewCalendarColumn"
+		  Me.BirthdateDataGridViewCalendarColumn.Width = 160
 		  '
 		  'CanDriveDataGridViewCheckBoxColumn
 		  '
@@ -109,6 +159,7 @@ Partial Class Form1
 		  Me.Text = "Form1"
 		  CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
 		  CType(Me.PersonBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+		  Me.pnlTests.ResumeLayout(False)
 		  Me.ResumeLayout(False)
 
 	 End Sub
@@ -125,9 +176,13 @@ Partial Class Form1
 		  End Try
 	 End Sub
 	 Friend WithEvents ColorPickerColumn1 As ColorPickerColumn
+	 Friend WithEvents btnMissingCols As Button
+	 Friend WithEvents btnSelected As Button
+	 Friend WithEvents btnColor As Button
+	 Friend WithEvents btnGenerate As Button
 	 Friend WithEvents FirstNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 	 Friend WithEvents LastNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-	 Friend WithEvents BirthdateDataGridViewTextBoxColumn As CalendarColumn
+	 Friend WithEvents BirthdateDataGridViewCalendarColumn As CalendarColumn
 	 Friend WithEvents CanDriveDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
 	 Friend WithEvents HairColor As ColorPickerColumn
 End Class
