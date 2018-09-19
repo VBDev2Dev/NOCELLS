@@ -51,6 +51,11 @@ Namespace GridColumns.Calendar
 					 Return GetType(Date)
 				End Get
 		  End Property
+		  Public Overrides ReadOnly Property FormattedValueType As Type
+				Get
+					 Return GetType(String)
+				End Get
+		  End Property
 
 	 End Class
 End Namespace
