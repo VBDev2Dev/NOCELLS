@@ -62,6 +62,10 @@ Public Class Form1
 	 End Sub
 
 	 Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+		  GeneratePeople()
+	 End Sub
+
+	 Private Sub GeneratePeople()
 		  Static rand As New Random
 		  Dim randString = Function(chars As Integer)
 									  Return New String(Enumerable.Range(0, chars).Select(Function(n) ChrW(rand.Next(65, 101))).ToArray)
@@ -78,5 +82,17 @@ Public Class Form1
 							)
 
 		  PersonBindingSource.DataSource = New BindingList(Of Person)(people)
+	 End Sub
+
+	 Private Sub btnChangeNotify_Click(sender As Object, e As EventArgs) Handles btnChangeNotify.Click
+		  If people.Count = 0 Then
+				GeneratePeople()
+				Return
+		  End If
+
+		  people.First.Birthdate = Now
+		  'For Each p In people
+				'p.Birthdate = Now
+		  'Next
 	 End Sub
 End Class
